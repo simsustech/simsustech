@@ -1,0 +1,76 @@
+version: "3.7"
+services:
+  autorestic:
+    container_name: autorestic
+    image: pascaliske/autorestic:latest
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      - garage
+    volumes:
+      - ./autorestic.yaml:/etc/autorestic/config.yml
+      - ./ocis:/ocis
+    environment:
+      AUTORESTIC_GARAGE_AWS_DEFAULT_REGION: garage
+      AUTORESTIC_GARAGE_RESTIC_REPOSITORY: "s3:http://host.docker.internal:3900/ocisdata"
+      AUTORESTIC_GARAGE_RESTIC_PASSWORD: ${RESTIC_PASSWORD}
+      AUTORESTIC_GARAGE_AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY}
+      AUTORESTIC_GARAGE_AWS_SECRET_ACCESS_KEY: ${S3_SECRET_KEY}
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      [
+        "autorestic --config /etc/autorestic/config.yml check && autorestic --config /etc/autorestic/config.yml backup --location ocis-data",
+      ]
+
+  garage:
+    image: dxflrs/garage:v0.8.0
+    container_name: garage
+    network_mode: "host"
+    volumes:
+      - /etc/garage.toml:/etc/garage.toml
+      - /media/NAS/s3/meta:/media/NAS/s3/meta
+      - /media/NAS/s3/data:/media/NAS/s3/data
+    restart: always
+
+  ocis:
+    image: owncloud/ocis:latest
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      - garage
+    entrypoint:
+      - /bin/sh
+      - /entrypoint-override.sh
+    volumes:
+      - ./ocis/entrypoint-override.sh:/entrypoint-override.sh
+      - ./ocis/config:/etc/ocis
+      - ./ocis/data:/var/lib/ocis/
+    environment:
+      ##############################
+      # For local development, make sure -not- to enable this when your server is accessible through the internet
+      # OCIS_INSECURE: true
+      # OCDAV_INSECURE: true
+      # PROXY_OIDC_INSECURE: true
+      # PROXY_INSECURE_BACKENDS: true
+      ##############################
+      ### Add an entry to /etc/hosts which points your domain to your server locally
+      #      OCIS_LOG_LEVEL: debug
+      OCIS_URL: https://${OCIS_DOMAIN}
+      PROXY_TLS: false
+      IDM_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      STORAGE_USERS_DRIVER: s3ng
+      STORAGE_SYSTEM_DRIVER: ocis
+      STORAGE_USERS_S3NG_ENDPOINT: http://host.docker.internal:3900
+      STORAGE_USERS_S3NG_REGION: garage
+      STORAGE_USERS_S3NG_ACCESS_KEY: ${S3_ACCESS_KEY}
+      STORAGE_USERS_S3NG_SECRET_KEY: ${S3_SECRET_KEY}
+      STORAGE_USERS_S3NG_BUCKET: ${S3_BUCKET}
+    labels:
+      caddy: ${OCIS_DOMAIN}
+      caddy.reverse_proxy: "{{upstreams 9200}}"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

@@ -1,0 +1,112 @@
+import type { VitrifyConfig, VitrifyConfigAsync } from 'vitrify'
+import { certificateFor } from 'devcert'
+import { plugin as mdPlugin } from 'vite-plugin-markdown'
+import { Mode } from 'vite-plugin-markdown'
+import { copyFile } from 'fs/promises'
+interface SimpleSiteGenerator {
+  ssg: {
+    title: string
+    url: string
+    template: string
+    favicon: string
+    tags: Record<string, { label: string }>
+  }
+}
+
+const ssg = {
+  title: 'simsustech',
+  url: 'www.simsus.tech',
+  favicon: '/favicon-96.png',
+  template: 'small-business',
+  templatePackage: '@simple-site-generator/templates',
+  sassVariables: {
+    $primary: '#22c92a',
+    $secondary: '#eece0cff',
+    $accent: '#00a4e6ff',
+    $text: '#3B352E',
+    $dark: '#1D1D1D',
+    $positive: '#21BA45',
+    $negative: '#C10015',
+    $info: '#31CCEC',
+    $warning: '#F2C037'
+  },
+  tags: {
+    menu: {
+      label: 'Menu'
+    },
+    footer: {
+      label: 'Footer'
+    },
+    contact: {
+      label: 'Contact'
+    }
+  }
+}
+
+const { template, templatePackage, title, url } = ssg
+
+export default async function ({ mode, command }): VitrifyConfigAsync {
+  const config: VitrifyConfig & SimpleSiteGenerator = {
+    plugins: [
+      mdPlugin({
+        mode: [Mode.MARKDOWN]
+      }),
+      {
+        name: 'simple-site-generator-plugin',
+        resolveId(id) {
+          if (id === 'virtual:ssg:template') {
+            return '\0virtual:ssg:template'
+          }
+        },
+        load(id) {
+          if (id === '\0virtual:ssg:template') {
+            return `import * as template from '${templatePackage}/${template}';
+              export * from '${templatePackage}/${template}';
+              export default template;`
+          }
+        },
+        closeBundle: () => {
+          copyFile(
+            new URL('./build/Caddyfile', import.meta.url).pathname,
+            new URL(`./dist/static/Caddyfile`, import.meta.url).pathname
+          )
+        }
+      }
+    ],
+    ssg,
+    vitrify: {
+      productName: title,
+      hooks: {
+        onSetup: [new URL('src/setup.ts', import.meta.url)]
+        // onBoot: [qMarkdown]
+      },
+      globalCss: [`${templatePackage}/${template}/css`],
+      sass: {
+        variables: ssg.sassVariables,
+        global: [
+          '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass',
+          '@quasar/quasar-ui-qmediaplayer/src/QMediaPlayer.sass'
+        ]
+      },
+      ssr: {
+        serverModules: ['vite-plugin-markdown']
+      }
+    },
+    quasar: {
+      extras: ['material-icons'],
+      framework: {
+        components: [
+          // Deprecated
+        ],
+        iconSet: 'svg-material-icons',
+        plugins: ['Dialog', 'Notify']
+      }
+    }
+  }
+  if (mode === 'development') {
+    config.server = {
+      https: await certificateFor('vitrify.test')
+    }
+  }
+  return config
+}

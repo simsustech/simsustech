@@ -1,0 +1,7 @@
+www.simsus.tech {
+  handle {
+    root * /srv/www.simsus.tech
+    try_files {path}.html {path} /index.html
+    file_server
+  }
+}

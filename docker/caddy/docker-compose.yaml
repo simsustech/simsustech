@@ -1,0 +1,35 @@
+version: "3.7"
+services:
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:ci-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      - CADDY_INGRESS_NETWORKS=web
+      - CADDY_DOCKER_CADDYFILE_PATH=/srv/Caddyfile
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv:/srv
+      - ./data:/data
+    labels:
+      caddy.email: ${EMAIL}
+      # Enable for local development
+      # caddy.local_certs: true
+
+    networks:
+      - web
+
+  # whoami:
+  #   image: traefik/whoami
+  #   labels:
+  #     caddy: whoami.com
+  #     caddy.reverse_proxy: "{{upstreams 80}}"
+  #   networks:
+  #     - web
+
+networks:
+  web:
+    external: true

@@ -1,0 +1,12 @@
+version: 2
+
+backends:
+  garage:
+    type: s3
+    path: host.docker.internal:3900/ocisdata
+
+locations:
+  ocis-data:
+    from: /ocis # Docker volume mount
+    to:
+      - garage
