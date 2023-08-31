@@ -6,58 +6,17 @@ label: Cloud storage
 ## Cloud storage
 This guide will show you how to host the following stack:
 - [Owncloud Infinite Storage](https://owncloud.dev/ocis/)
-- [Garage](https://garagehq.deuxfleurs.fr/)
-- [autorestic](https://autorestic.vercel.app/)
-
-::: warning
-Garage currently is a beta release.
-:::
 
 ## Installation
 - Install `docker` and `docker-compose` on your system.
-- Install the garage binary according to their [instructions](https://garagehq.deuxfleurs.fr/documentation/quick-start/)
-- Initialize the `garage.toml` file
-```sh
-cat > garage.toml <<EOF
-metadata_dir = "/media/NAS/s3/meta"
-data_dir = "/media/NAS/s3/data"
-
-replication_mode = "none"
-
-rpc_bind_addr = "[::]:3901"
-rpc_public_addr = "127.0.0.1:3901"
-rpc_secret = "$(openssl rand -hex 32)"
-
-bootstrap_peers = []
-
-[s3_api]
-s3_region = "garage"
-api_bind_addr = "[::]:3900"
-root_domain = ".s3.garage"
-EOF
-
-cp garage.toml /etc/garage.toml
-```
 
 ## Docker setup
 - Copy the [docker files](/docker/) to your desired location.
 - Edit the [Caddy .env](/docker/caddy/.env) file and enter your email address.
 - Run the [Caddy docker container](/docker/caddy/docker-compose.yaml) with `docker compose up`.
-- Run the [Garage docker container](/docker/cloudstorage/docker-compose.yaml) with `docker compose up garage`
-
-- Initialize garage according to their [instructions](https://garagehq.deuxfleurs.fr/documentation/quick-start/) (create a layout, an `ocis` and `ocis-data` bucket, API key and set the key's permission)
-- Modify the [cloud storage .env](/docker/cloudstorage/.env) file:
-```docker
-OCIS_DOMAIN= # The domain on which your OCIS instance is accessible
-S3_ACCESS_KEY= # 'Key ID' in Garage
-S3_SECRET_KEY= # 'Secret key' in Garage
-S3_BUCKET= # The bucket your created in Garage
-ADMIN_PASSWORD= # The password for the admin user in OCIS
-RESTIC_PASSWORD= # The password Restic uses to encrypt your backups
-```
-
 - Start all cloud storage services with `docker compose up`.
 - Visit your OCIS_DOMAIN and login with `admin:ADMIN_PASSWORD`.
+
 
 ## Security
 ### Firewall
