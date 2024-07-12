@@ -9,7 +9,7 @@ tags:
 subpages:
   - cloudstorage
 ---
-## Products
+## Guides
 :::
   [Cloud storage](/cloudstorage)
   Host your own cloud storage with Owncloud Infinite Storage (OCIS) and Garage.
