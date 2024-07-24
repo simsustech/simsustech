@@ -10,3 +10,7 @@ tags:
   [Vitrify](https://github.com/simsustech/vitrify)
   Vite as your Full Stack development tool
 :::
+:::
+  [Simple Site Generator](/simplesitegenerator)
+  Easily generate a full featured website from a single YAML file.
+:::

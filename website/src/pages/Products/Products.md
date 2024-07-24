@@ -7,13 +7,18 @@ order: 1
 tags:
   - menu
 subpages:
-  - simplesitegenerator
+  - petboarding
+  - slimfact
   - modularapi
 ---
 ## Products
 :::
-  [Simple Site Generator](/simplesitegenerator)
-  Easily generate a full featured website from a single YAML file.
+  [Petboarding](/petboarding)
+  Easy, fast and reliable pet boarding booking system. 
+:::
+:::
+  [SlimFact](/slimfact)
+  Streamlined invoicing made easy 
 :::
 :::
   [Modular API](/modularapi)

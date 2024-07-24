@@ -6,10 +6,10 @@ order: 2
 tags:
   - menu
 subpages:
-  - consulting
+  - development
 ---
 ## Services
 :::
-[Consulting](/consulting)
-Need assistance on your next sustainable project?
+[Web(app) development](/development)
+Take your web presence to the next level with a custom-made web application.
 :::
