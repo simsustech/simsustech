@@ -21,8 +21,8 @@ Are you ready to elevate your business with state-of-the-art web applications? L
 3. Progressive Web Applications (PWA)\
   Our PWAs combine the best of web and mobile apps. Enjoy offline access, push notifications, and a native app-like experience, all while maintaining the reach and flexibility of the web.
 
-4. OAuth Support Security is our top priority\
-  With OAuth integration, we provide secure and streamlined authentication, ensuring your users’ data is protected while offering a hassle-free login experience.
+4. OpenID Connect (OIDC) Support\
+  With OpenID Connect integration, we provide secure and streamlined authentication, ensuring your users’ data is protected while offering a hassle-free login experience.
 
 ## Proven Success
 
