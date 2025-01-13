@@ -2,7 +2,7 @@ import type { VitrifyConfig, VitrifyConfigAsync } from 'vitrify'
 import { certificateFor } from 'devcert'
 import { plugin as mdPlugin } from 'vite-plugin-markdown'
 import { Mode } from 'vite-plugin-markdown'
-import { copyFile } from 'fs/promises'
+import { render } from '@vitrify/tools/render'
 interface SimpleSiteGenerator {
   ssg: {
     title: string
@@ -66,10 +66,13 @@ export default async function ({ mode, command }): VitrifyConfigAsync {
           }
         },
         closeBundle: () => {
-          copyFile(
-            new URL('./build/Caddyfile', import.meta.url).pathname,
-            new URL(`./dist/static/Caddyfile`, import.meta.url).pathname
-          )
+          render({
+            inputPath: new URL('./build/Caddyfile', import.meta.url),
+            outputPath: new URL(`./dist/static/Caddyfile`, import.meta.url),
+            templateVariables: {
+              url
+            }
+          })
         }
       }
     ],
@@ -105,7 +108,7 @@ export default async function ({ mode, command }): VitrifyConfigAsync {
   }
   if (mode === 'development') {
     config.server = {
-      https: await certificateFor('vitrify.test')
+      https: await certificateFor('vitrify.local')
     }
   }
   return config

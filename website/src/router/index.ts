@@ -3,7 +3,7 @@ import {
   createRouter as _createRouter,
   createWebHistory
 } from 'vue-router'
-import routes from './routes'
+import routes from './routes.js'
 
 export default function createRouter() {
   return _createRouter({

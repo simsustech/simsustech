@@ -9,6 +9,5 @@ tags:
 ---
 ## Blog
 :::
-  [Testing, staging and production environments](/environments)
-  How to use different environments to test and deploy your code.
+  [Why I use Quasar Framework](https://github.com/simsustech/simsustech/discussions/1)
 :::

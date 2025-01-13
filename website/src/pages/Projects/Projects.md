@@ -2,6 +2,7 @@
 id: projects
 label: Projects
 title: Projects
+icon: tactic
 order: 2
 tags:
   - menu

@@ -1,16 +1,16 @@
 ---
-id: development
-title: Web(app) development
-label: Development
+id: webapplication
+title: Web application
+label: Web application
 content:
 ---
-# Web(app) development
+# Web application
 
 Transform your digital presence with cutting-edge web applications.
 
 Are you ready to elevate your business with state-of-the-art web applications? Look no further! We specialize in creating modern, high-performance web applications using a self-developed stack based on [Vue](https://vuejs.org/), [Quasar](https://quasar.dev), and [Fastify](https://fastify.dev).
 
-## Why Choose Us?
+## Why choose simsustech?
 
 1. Comprehensive Database Integration\
  We seamlessly integrate databases to ensure your data is always accessible, secure, and efficiently managed. Whether you need complex data handling or simple storage solutions, we’ve got you covered.
@@ -24,7 +24,7 @@ Are you ready to elevate your business with state-of-the-art web applications? L
 4. OpenID Connect (OIDC) Support\
   With OpenID Connect integration, we provide secure and streamlined authentication, ensuring your users’ data is protected while offering a hassle-free login experience.
 
-## Proven Success
+## Proven success
 
 Check out our open-source projects to see our expertise in action:
 

@@ -81,6 +81,8 @@ const routes: RouteRecordRaw[] = [
         pages: pages.map(([key, page]) => page.attributes)
       }
 
+      console.log(key)
+      console.log(attributes)
       return {
         path: attributes.id === 'home' ? '' : attributes.id,
         component: attributes.noSsr ? noSsrComponent : vuePage,

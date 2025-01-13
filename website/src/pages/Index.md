@@ -7,11 +7,11 @@ tags:
   - menu
 icon: home
 cards:
-  - header: simsustech
-    content: Innovation in simple, sustainable technology
+  - header: Providing simple, sustainable solutions for professionals.
+    content: At simsustech we develop future-proof websites and web applications.
     cta:
-      message: About simsustech
-      route: /about
+      message: View our services
+      route: /services
 images:
   - name: Landing
     src: /images/landing/landing.png
