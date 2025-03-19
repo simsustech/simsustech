@@ -22,11 +22,12 @@ Advantages of SSG:
 
 [Looking for a website? Please contact us.](/contact)
 
-<details>
-<summary>Portfolio</summary>
+### Portfolio ###
 
 [Hondenvakantieboerderij Nicky](https://www.hvbnicky.nl)
 [Blonde garant](https://www.blondegarant.nl)
+[Bouman&Bouman](https://www.bouman-bouman.nl)
 [Petboarding](https://www.petboarding.app)
 [SlimFact](https://www.slimfact.app)
-</details>
+[Bouman&Bouman](https://www.bouman-bouman.nl)
+[van Hemert Flowers](https://www.vanhemertflowers.nl)
