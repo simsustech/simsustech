@@ -6,23 +6,32 @@ content:
 ---
 # Web application
 
-Transform your digital presence with cutting-edge web applications.
+At simsustech we specialize in building complete web applications using our own self-developed stack.
+This stack consists of:
 
-Are you ready to elevate your business with state-of-the-art web applications? Look no further! We specialize in creating modern, high-performance web applications using a self-developed stack based on [Vue](https://vuejs.org/), [Quasar](https://quasar.dev), and [Fastify](https://fastify.dev).
+• Frontend: Built with Vue.js and Quasar Framework, which results in fast, responsive and visually appealing interfaces.
 
-## Why choose simsustech?
+• Backend: A self developed Node.JS API, based on Fastify, provides speed and reliability. Main features:
 
-1. Comprehensive Database Integration\
- We seamlessly integrate databases to ensure your data is always accessible, secure, and efficiently managed. Whether you need complex data handling or simple storage solutions, we’ve got you covered.
+ • OpenID Connect (OIDC) Authentication: Streamlined login experience, including support for third-party login with e.g. Google, Facebook or Microsoft.
 
-2. Server-Side Rendering (SSR)\
-  Experience faster load times and improved SEO with our server-side rendering capabilities. By pre-rendering your web pages on the server, we deliver a smoother and more responsive user experience.
+ • Integration of payments and invoicing in the web application, either built-in or through an external API.
 
-3. Progressive Web Applications (PWA)\
-  Our PWAs combine the best of web and mobile apps. Enjoy offline access, push notifications, and a native app-like experience, all while maintaining the reach and flexibility of the web.
+ • Type-safe API with tRPC: communication between front-end and back-end is efficient and faultless.
 
-4. OpenID Connect (OIDC) Support\
-  With OpenID Connect integration, we provide secure and streamlined authentication, ensuring your users’ data is protected while offering a hassle-free login experience.
+ • PostgreSQL Database: Safe, fast and type-safe data storage thanks to PostgreSQL and Kysely as a query builder. No limitations through any constrains by an ORM.
+
+ • Server-side rendering for better Search Engine Optimization (SEO) and quicker loading times.
+
+## Complete adaptability
+The technical details described above provide a solid, safe and fast base for your web application. If you have any specific feature requests, they can easily be included as long as it does not compromise security or reliability.
+
+E.g.
+✔ Integrate your own or third-party NPM packages.
+✔ Communication with external API's.
+✔ Theme the application to your likings.
+✔ Integrate a job scheduler (cron).
+
 
 ## Proven success
 
@@ -31,6 +40,4 @@ Check out our open-source projects to see our expertise in action:
 Petboarding: https://github.com/simsustech/petboarding \
 SlimFact: https://github.com/simsustech/slimfact
 
-Let’s build something great together.
-
-Ready to take your web presence to the next level? Contact us today to discuss how we can create a custom web application tailored to your needs.
+If you are looking for a web application, either to serve to your clients or an internal tool, contact us to discuss the requirements and possibilities.
