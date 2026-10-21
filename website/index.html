@@ -1,10 +1,84 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!--
+      `charset` must stay first: the encoding has to be declared inside the
+      first 1 KiB, and the SSR-collected meta tags are injected at the end of the
+      head element (see the vitrify injectSsrContext fix) so they cannot push
+      this line out of that window.
+    -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" />
-    <title></title>
+
+    <!--
+      No font preconnect: the fonts are this site's own files, served by the same
+      Caddy as the page, so there is no third-party origin to warm up. They are
+      declared in `vitrify.config.ts` and fingerprinted by Vite, which is also why
+      there is no preload link for them — the hashed name is not knowable here.
+      `font-display: swap` covers the first paint.
+    -->
+
+    <!--
+      The Meta plugin owns the document title. A static title element written
+      here would be a second one in the built HTML, which the verifier rejects —
+      and a crawler would then pick arbitrarily between the two.
+
+      Keep element literals (an angle-bracketed `title`, `head` or `link`) out of
+      these comments: vitrify rewrites the head with tag-matching regular
+      expressions, and a tag-shaped word inside a comment is a false match that
+      mangles the document.
+    -->
+
+    <!--
+      Analytics is Vitrify's, not this file's: `vitrify.analytics` in
+      `vitrify.config.ts` emits the Umami loader into the prerendered HTML at
+      build time, so it is in the document a crawler sees, and an empty website
+      id ships no tag at all. The id, the public host and the renamed script are
+      all configured there.
+
+      Two things in that config look wrong and are not. `stats.` rather than
+      `analytics.`, and `/s.js` rather than `/script.js`: the obvious names sit
+      on ad-blocker blocklists, and both must match TRACKER_SCRIPT_NAME and
+      UMAMI_DOMAIN in the Umami stack on the VPS. The host is also deliberately
+      not the one Umami's own dashboard snippet shows — that origin is only
+      reachable over netbird, over http, on a name no visitor resolves, whereas
+      the public host serves the same instance-wide tracker with the collect
+      endpoint baked in.
+    -->
+
+    <!--
+      Measure intent, not only page views.
+
+      Every contact click is one event, carrying enough to answer the question
+      the monthly review actually asks: which page produced it, whether it was a
+      link to the contact page or a mail client opening, and which service the
+      subject names. "48 visitors" says nothing; "three people opened an email
+      about a website from the website page" is a number you can act on.
+    -->
+    <script>
+      addEventListener('DOMContentLoaded', function () {
+        var selector = 'a[href="/contact"], a[href^="mailto:"], a[href^="tel:"]'
+
+        document.querySelectorAll(selector).forEach(function (el) {
+          el.addEventListener('click', function () {
+            if (!window.umami) return
+
+            var href = el.getAttribute('href') || ''
+            var match = href.match(/[?&]subject=([^&]*)/)
+            var subject = match ? decodeURIComponent(match[1]) : 'none'
+
+            window.umami.track('contact-intent', {
+              page: location.pathname,
+              channel: href.startsWith('mailto:') ? 'email' : 'contact-page',
+              // The service selector on the contact page gives each link its own
+              // subject, so the choice is visible in the event. Anything else
+              // reports 'none' rather than guessing.
+              subject: subject
+            })
+          })
+        })
+      })
+    </script>
   </head>
 
   <body>

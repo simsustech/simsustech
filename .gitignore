@@ -1,0 +1,8 @@
+# pnpm's content-addressable cache when a run points store-dir here. It is
+# rebuildable from the registry, can be hundreds of megabytes, and committing it
+# would be the single worst thing `git add -A` could do in this repo.
+.pnpm-store/
+
+# Agent scratch directories, at the root and beside the app.
+.agent-tmp/
+.pi/

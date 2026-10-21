@@ -4,6 +4,13 @@ on:
   push:
     branches: ["production"]
 
+# The job reads the repository and nothing else; every credential it needs
+# arrives as a secret. Without this block the workflow token inherits the
+# repository default, which may be read/write, and a compromised build step
+# could then push.
+permissions:
+  contents: read
+
 env:
   working-directory: ./website/
   url: www.simsus.tech
@@ -13,42 +20,58 @@ jobs:
     name: Build and deploy production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # actions/checkout v7.0.1, pinned to a commit rather than a tag: a tag is
+      # mutable, so whoever controls it can point it at different code. A pin
+      # also makes the run auditable afterwards; `@v7` says nothing about what
+      # actually executed.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          # Nothing pushes with the token; do not leave it in .git/config.
+          persist-credentials: false
 
-      - name: Creating .npmrc
+      - name: Create .npmrc
         run: |
-          cat > ${{env.working-directory}}.npmrc << EOF
-            @simsustech:registry=https://npm.simsus.tech
-            //npm.simsus.tech/:_authToken=$SIMSUSTECH_NPM_TOKEN
+          cat > "${{ env.working-directory }}.npmrc" <<EOF
+          @simsustech:registry=https://npm.simsus.tech
+          //npm.simsus.tech/:_authToken=$SIMSUSTECH_NPM_TOKEN
           EOF
         env:
           SIMSUSTECH_NPM_TOKEN: ${{ secrets.SIMSUSTECH_NPM_TOKEN }}
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      # pnpm/action-setup v6.1.0, pinned. pnpm 12 is required: the dependency
+      # set (Vite 8, Vue Router 5, Vitrify 0.30, TypeScript 7) does not install
+      # or build on pnpm 9 / Node 20.
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413
         with:
-          version: 9
+          version: 12
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      # actions/setup-node v7.1.0, pinned.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install and build
         working-directory: ${{ env.working-directory }}
         run: |
-          pnpm i
+          pnpm install --frozen-lockfile
           pnpm run build
 
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@5.2
+      # burnett01/rsync-deployments 9.0.2, pinned. This step is the one that
+      # matters most: it receives DEPLOY_KEY, so a moved tag would hand an SSH
+      # private key to whatever code the tag pointed at. v9 keeps
+      # strict_hostkeys_checking off by default, as v7 did.
+      # yamllint disable-line rule:line-length
+      - uses: burnett01/rsync-deployments@2cbb5ed94b73d111d07a40b071b1c7d3c0272435
         with:
           switches: -avzr --delete
-          path: ${{env.working-directory}}dist/static/
-          remote_path: /srv/${{env.url}}
+          path: ${{ env.working-directory }}dist/static/
+          remote_path: /srv/${{ env.url }}
           remote_host: ${{ secrets.DEPLOY_HOST }}
           remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOY_KEY }}
 
+      # Runs even when an earlier step failed: the runner is ephemeral, but a
+      # token written to disk should not outlive the step that needed it.
       - name: Remove .npmrc
-        run: rm ${{env.working-directory}}.npmrc
+        if: always()
+        run: rm -f "${{ env.working-directory }}.npmrc"

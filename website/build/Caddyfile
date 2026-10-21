@@ -1,15 +1,64 @@
+# Security headers, shared by the normal routes and the error handler.
+#
+# Caddy's automatic HTTPS secures the transport, but without HSTS nothing tells
+# the browser to refuse plain http on the next visit, and without the rest the
+# site can be framed or MIME-sniffed. This is a snippet rather than a directive
+# inside the site block because `handle_errors` runs in its own route: a
+# site-level `header` does not reach it, and the 404 page is a full HTML page
+# that would otherwise ship without HSTS and with Caddy's `Server` header.
+#
+# No `includeSubDomains`: HSTS only covers subdomains of the host that sends it,
+# and nothing lives under www.simsus.tech — `stats.` and `npm.` are siblings,
+# each of which has to send its own. No `preload`: that is a one-way commitment
+# to every browser's built-in list. No CSP yet: the pages inline their CSS and
+# one event script, so a policy needs hashes or nonces and belongs in a change
+# that can be tested against the prerendered output.
+(SecurityHeaders) {
+  header {
+    Strict-Transport-Security "max-age=15552000"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    X-Frame-Options "DENY"
+    Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=()"
+    -Server
+  }
+}
+
 www.simsus.tech {
+  import SecurityHeaders
+
   @webp path *.webp
   header @webp Cache-Control "public, max-age=31536000, immutable"
+
+  # The bundler fingerprints every asset as `name-<hash>.ext`; such a file is
+  # immutable, so the browser may keep it for a year without revalidating.
+  @hashed path_regexp hashed -[A-Za-z0-9_]{8,}\.(js|mjs|css|woff2|png|jpe?g|webp|svg)$
+  header @hashed Cache-Control "public, max-age=31536000, immutable"
+
   encode zstd gzip
   handle_path /* {
     root * /srv/www.simsus.tech
-    try_files {path}.html {path} /404.html
+    try_files {path}.html {path}
     file_server
   }
   handle / {
     root * /srv/www.simsus.tech
     try_files index.html
+    file_server
+  }
+
+  # A missing page has to answer 404. Ending `try_files` in a file
+  # (`/404.html`, or `/index.html`) answers 200, so every mistyped URL is a
+  # page a crawler will index — a soft 404 — and the status a monitor sees is a
+  # lie. The kit's 404 page carries `noindex` of its own.
+  #
+  # `import SecurityHeaders` again: this route does not inherit the site-level
+  # one, and it is reachable by anyone who mistypes a URL.
+  handle_errors {
+    import SecurityHeaders
+    root * /srv/www.simsus.tech
+    @notFound expression {err.status_code} == 404
+    rewrite @notFound /404.html
     file_server
   }
 }

@@ -1,29 +1,27 @@
 <template>
-  <div
-    class="fullscreen bg-primary text-white text-center q-pa-md flex flex-center"
+  <main
+    class="ssg-section flex flex-center text-center min-h-[60vh] bg-[var(--q-surface-container-low)] text-[var(--q-on-surface)]"
   >
-    <div>
-      <div style="font-size: 30vh">404</div>
+    <div class="ssg-section__inner">
+      <!--
+        A real `h1`: the 404 page is a page like any other, and `ssg verify`
+        requires exactly one `h1` on every page.
 
-      <div class="text-h2" style="opacity: 0.4">Oops. Nothing here...</div>
+        The page keeps the header and footer — an earlier version covered the
+        whole viewport with `fullscreen`, so a lost visitor had no navigation at
+        all, only a button.
+      -->
+      <h1 class="text-[clamp(5rem,18vw,10rem)] leading-none m-0">404</h1>
 
-      <q-btn
-        class="q-mt-xl"
-        color="white"
-        text-color="blue"
-        unelevated
-        to="/"
-        label="Go Home"
-        no-caps
-      />
+      <p class="text-step-1 opacity-80 mt-space-2 mb-0">Sorry, nothing here.</p>
+
+      <CtaButton class="mt-space-4" label="Go home" route="/" />
     </div>
-  </div>
+  </main>
 </template>
 
-<scirpt lang="ts">
-export default {
-  name: 'Error404Page'
-}
-</scirpt>
+<script setup lang="ts">
+import { CtaButton } from '@simple-site-generator/templates'
 
-<script setup lang="ts"></script>
+defineOptions({ name: 'Error404Page' })
+</script>

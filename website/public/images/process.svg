@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">Four steps, and what you get at each one</title>
+  <desc id="desc">A free conversation, a fixed quote, work in phases you can stop between, and a handover where the code and the domain stay yours.</desc>
+
+  <style>
+    .panel { fill: #ffffff; }
+    .edge { fill: none; stroke: #c2c8bc; }
+    .title { fill: #1a1c19; font: 700 40px/1 system-ui, sans-serif; }
+    .note { fill: #42493f; font: 400 24px/1 system-ui, sans-serif; }
+    .card { fill: #f4f4ee; stroke: #c2c8bc; stroke-width: 2; }
+    .card-first { fill: #d6e8cd; stroke: #006e0c; stroke-width: 2; }
+    .num { fill: #006e0c; font: 700 34px/1 system-ui, sans-serif; }
+    .step { fill: #1a1c19; font: 700 26px/1 system-ui, sans-serif; }
+    .price { fill: #006e0c; font: 600 21px/1 system-ui, sans-serif; }
+    .body { fill: #42493f; font: 400 20px/1.35 system-ui, sans-serif; }
+    .flow { stroke: #42493f; stroke-width: 3; fill: none; }
+  </style>
+
+  <rect class="panel" x="0.5" y="0.5" width="1199" height="399" rx="24" />
+  <rect class="edge" x="0.5" y="0.5" width="1199" height="399" rx="24" />
+
+  <text class="title" x="64" y="88">Four steps, and what you get at each</text>
+  <text class="note" x="64" y="126">You can stop after any of them, and you know the price before the work starts.</text>
+
+  <g>
+    <rect class="card-first" x="64" y="164" width="250" height="180" rx="16" />
+    <text class="num" x="88" y="210">1</text>
+    <text class="step" x="88" y="248">Conversation</text>
+    <text class="price" x="88" y="276">no charge</text>
+    <text class="body" x="88" y="306">You get an honest</text>
+    <text class="body" x="88" y="330">read: worth it, or not.</text>
+  </g>
+
+  <g>
+    <rect class="card" x="338" y="164" width="250" height="180" rx="16" />
+    <text class="num" x="362" y="210">2</text>
+    <text class="step" x="362" y="248">Fixed quote</text>
+    <text class="body" x="362" y="276">What is built, what</text>
+    <text class="body" x="362" y="300">is left out, and the</text>
+    <text class="body" x="362" y="324">price and the date.</text>
+  </g>
+
+  <g>
+    <rect class="card" x="612" y="164" width="250" height="180" rx="16" />
+    <text class="num" x="636" y="210">3</text>
+    <text class="step" x="636" y="248">Phases</text>
+    <text class="body" x="636" y="276">Each ends in a build</text>
+    <text class="body" x="636" y="300">you can click — and</text>
+    <text class="body" x="636" y="324">it is verified first.</text>
+  </g>
+
+  <g>
+    <rect class="card" x="886" y="164" width="250" height="180" rx="16" />
+    <text class="num" x="910" y="210">4</text>
+    <text class="step" x="910" y="248">Handover</text>
+    <text class="body" x="910" y="276">The code, the domain</text>
+    <text class="body" x="910" y="300">and a note on how to</text>
+    <text class="body" x="910" y="324">run it — all yours.</text>
+  </g>
+
+  <path class="flow" d="M314 254 H330" marker-end="url(#p)" />
+  <path class="flow" d="M588 254 H604" marker-end="url(#p)" />
+  <path class="flow" d="M862 254 H878" marker-end="url(#p)" />
+
+  <defs>
+    <marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#42493f" />
+    </marker>
+  </defs>
+
+  <text class="note" x="64" y="380">Step two is the one that matters: a price that is the price, not an estimate.</text>
+</svg>

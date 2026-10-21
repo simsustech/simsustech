@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+  <title id="title">Lighthouse scores for simsus.tech</title>
+  <desc id="desc">Accessibility 100, best practices 100, SEO 100, performance 90, in Lighthouse's mobile form factor. Measured with the site's own verification run, which gates every deploy.</desc>
+
+  <style>
+    .panel { fill: #ffffff; }
+    .edge { fill: none; stroke: #c2c8bc; stroke-width: 1; }
+    .ring { fill: none; stroke-width: 14; stroke-linecap: round; }
+    .track { stroke: #e8e9e2; }
+    .good { stroke: #006e0c; }
+    .score { fill: #1a1c19; font: 700 44px/1 system-ui, sans-serif; text-anchor: middle; }
+    .label { fill: #42493f; font: 600 26px/1 system-ui, sans-serif; text-anchor: middle; }
+    .heading { fill: #1a1c19; font: 700 40px/1 system-ui, sans-serif; }
+    .note { fill: #42493f; font: 400 24px/1 system-ui, sans-serif; }
+  </style>
+
+  <rect class="panel" x="0.5" y="0.5" width="1199" height="448" rx="24" />
+  <rect class="edge" x="0.5" y="0.5" width="1199" height="448" rx="24" />
+
+  <text class="heading" x="64" y="88">Lighthouse, measured on this site</text>
+  <text class="note" x="64" y="126">Every build runs these checks and fails rather than ship a regression.</text>
+
+  <!-- Gauges. r=56, so a full circle is 2πr = 351.86 of stroke; each arc is
+       drawn from the top with rotate(-90). Labels sit below the rings, clear
+       of the subtitle above. -->
+
+  <g transform="translate(225 240)">
+    <circle class="ring track" r="56" />
+    <circle class="ring good" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="score" y="15">100</text>
+  </g>
+  <text class="label" x="225" y="340">Accessibility</text>
+
+  <g transform="translate(475 240)">
+    <circle class="ring track" r="56" />
+    <circle class="ring good" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="score" y="15">100</text>
+  </g>
+  <text class="label" x="475" y="340">Best practices</text>
+
+  <g transform="translate(725 240)">
+    <circle class="ring track" r="56" />
+    <circle class="ring good" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="score" y="15">100</text>
+  </g>
+  <text class="label" x="725" y="340">SEO</text>
+
+  <g transform="translate(975 240)">
+    <circle class="ring track" r="56" />
+    <circle class="ring good" r="56" stroke-dasharray="316.67 351.86" transform="rotate(-90)" />
+    <text class="score" y="15">90</text>
+  </g>
+  <text class="label" x="975" y="340">Performance</text>
+
+  <text class="note" x="64" y="394">Lighthouse's mobile run, from the verification run that gates every deploy.</text>
+  <text class="note" x="64" y="426">JavaScript 195 KB of 250 KB. CSS 34 KB of 60 KB. Performance warns, it does not gate.</text>
+</svg>

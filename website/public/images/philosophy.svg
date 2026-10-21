@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">What simple, sustainable technology means here</title>
+  <desc id="desc">Four principles: simple by default, sustainable, accessible and cooperative.</desc>
+
+  <style>
+    .panel { fill: #ffffff; }
+    .edge { fill: none; stroke: #c2c8bc; }
+    .title { fill: #1a1c19; font: 700 40px/1 system-ui, sans-serif; }
+    .note { fill: #42493f; font: 400 24px/1 system-ui, sans-serif; }
+    .card { fill: #f4f4ee; stroke: #c2c8bc; stroke-width: 2; }
+    .mark { fill: #d6e8cd; stroke: #006e0c; stroke-width: 2; }
+    .mark-glyph { fill: #006e0c; font: 700 30px/1 system-ui, sans-serif; text-anchor: middle; }
+    .card-title { fill: #1a1c19; font: 700 27px/1 system-ui, sans-serif; }
+    .card-text { fill: #42493f; font: 400 21px/1.35 system-ui, sans-serif; }
+  </style>
+
+  <rect class="panel" x="0.5" y="0.5" width="1199" height="439" rx="24" />
+  <rect class="edge" x="0.5" y="0.5" width="1199" height="439" rx="24" />
+
+  <text class="title" x="64" y="90">Simple, sustainable technology</text>
+  <text class="note" x="64" y="130">Four rules, applied before choosing anything.</text>
+
+  <g>
+    <rect class="card" x="64" y="168" width="256" height="200" rx="16" />
+    <rect class="mark" x="88" y="192" width="48" height="48" rx="24" />
+    <text class="mark-glyph" x="112" y="226">1</text>
+    <text class="card-title" x="88" y="278">Simple by default</text>
+    <text class="card-text" x="88" y="308">The smallest stack</text>
+    <text class="card-text" x="88" y="334">that solves the</text>
+    <text class="card-text" x="88" y="360">problem.</text>
+  </g>
+
+  <g>
+    <rect class="card" x="344" y="168" width="256" height="200" rx="16" />
+    <rect class="mark" x="368" y="192" width="48" height="48" rx="24" />
+    <text class="mark-glyph" x="392" y="226">2</text>
+    <text class="card-title" x="368" y="278">Sustainable</text>
+    <text class="card-text" x="368" y="308">Open standards and</text>
+    <text class="card-text" x="368" y="334">long-term support:</text>
+    <text class="card-text" x="368" y="360">no single vendor.</text>
+  </g>
+
+  <g>
+    <rect class="card" x="624" y="168" width="256" height="200" rx="16" />
+    <rect class="mark" x="648" y="192" width="48" height="48" rx="24" />
+    <text class="mark-glyph" x="672" y="226">3</text>
+    <text class="card-title" x="648" y="278">Accessible</text>
+    <text class="card-text" x="648" y="308">Fast, semantic and</text>
+    <text class="card-text" x="648" y="334">navigable by keyboard</text>
+    <text class="card-text" x="648" y="360">or screen reader.</text>
+  </g>
+
+  <g>
+    <rect class="card" x="904" y="168" width="232" height="200" rx="16" />
+    <rect class="mark" x="928" y="192" width="48" height="48" rx="24" />
+    <text class="mark-glyph" x="952" y="226">4</text>
+    <text class="card-title" x="928" y="278">Cooperative</text>
+    <text class="card-text" x="928" y="308">You keep the code,</text>
+    <text class="card-text" x="928" y="334">the domain and the</text>
+    <text class="card-text" x="928" y="360">explanation.</text>
+  </g>
+
+  <text class="note" x="64" y="410">Each rule removes work later: fewer parts, no lock-in, no retrofit.</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 560"
+  width="1200"
+  height="560"
+  role="presentation"
+  aria-hidden="true"
+>
+  <!--
+    Decorative header illustration: connected services. Deliberately transparent
+    and low-contrast so it can sit behind a page title without competing with it.
+  -->
+  <g
+    fill="none"
+    stroke="#006e0c"
+    stroke-opacity="0.28"
+    stroke-width="3"
+    stroke-dasharray="12 12"
+  >
+    <path d="M250 380 L470 210 L700 330 L965 150" />
+  </g>
+
+  <g
+    fill="none"
+    stroke="#006e0c"
+    stroke-opacity="0.34"
+    stroke-width="4"
+  >
+    <circle cx="250" cy="380" r="34" />
+    <circle cx="470" cy="210" r="44" />
+    <circle cx="700" cy="330" r="34" />
+    <circle cx="965" cy="150" r="40" />
+  </g>
+
+  <g fill="#006e0c" fill-opacity="0.5">
+    <circle cx="250" cy="380" r="12" />
+    <circle cx="470" cy="210" r="16" />
+    <circle cx="700" cy="330" r="12" />
+    <circle cx="965" cy="150" r="14" />
+  </g>
+</svg>

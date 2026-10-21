@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">How this website is built and served</title>
+  <desc id="desc">Markdown content is prerendered by Vitrify with Vue and Quasar, verified for accessibility, SEO, budgets and Lighthouse, then served as static files by Caddy. No database and no runtime are involved.</desc>
+
+  <style>
+    .panel { fill: #ffffff; }
+    .edge { fill: none; stroke: #c2c8bc; }
+    .title { fill: #1a1c19; font: 700 40px/1 system-ui, sans-serif; }
+    .note { fill: #42493f; font: 400 24px/1 system-ui, sans-serif; }
+    .step { fill: #d6e8cd; stroke: #006e0c; stroke-width: 2; }
+    .step-alt { fill: #f4f4ee; stroke: #c2c8bc; stroke-width: 2; }
+    .step-title { fill: #1a1c19; font: 700 26px/1.2 system-ui, sans-serif; text-anchor: middle; }
+    .step-note { fill: #42493f; font: 400 21px/1.3 system-ui, sans-serif; text-anchor: middle; }
+    .flow { stroke: #42493f; stroke-width: 3; fill: none; }
+    .chip { fill: #006e0c; font: 600 21px/1 system-ui, sans-serif; text-anchor: middle; }
+  </style>
+
+  <rect class="panel" x="0.5" y="0.5" width="1199" height="429" rx="24" />
+  <rect class="edge" x="0.5" y="0.5" width="1199" height="429" rx="24" />
+
+  <text class="title" x="64" y="92">How this site is built and served</text>
+  <text class="note" x="64" y="132">From a Markdown file to a visitor, with a gate that can refuse the result.</text>
+
+  <g>
+    <rect class="step-alt" x="64" y="176" width="200" height="130" rx="16" />
+    <text class="step-title" x="164" y="228">Markdown</text>
+    <text class="step-note" x="164" y="258">content +</text>
+    <text class="step-note" x="164" y="284">frontmatter</text>
+  </g>
+
+  <g>
+    <rect class="step" x="304" y="176" width="200" height="130" rx="16" />
+    <text class="step-title" x="404" y="228">Prerender</text>
+    <text class="step-note" x="404" y="258">Vue + Quasar,</text>
+    <text class="step-note" x="404" y="284">via Vitrify</text>
+  </g>
+
+  <g>
+    <rect class="step" x="544" y="176" width="200" height="130" rx="16" />
+    <text class="step-title" x="644" y="228">Verify</text>
+    <text class="step-note" x="644" y="258">accessibility, SEO,</text>
+    <text class="step-note" x="644" y="284">budgets, Lighthouse</text>
+  </g>
+
+  <g>
+    <rect class="step-alt" x="784" y="176" width="200" height="130" rx="16" />
+    <text class="step-title" x="884" y="228">Serves</text>
+    <text class="step-note" x="884" y="258">Caddy: gzip,</text>
+    <text class="step-note" x="884" y="284">immutable caching</text>
+  </g>
+
+  <g>
+    <rect class="step" x="1024" y="176" width="112" height="130" rx="16" />
+    <text class="step-title" x="1080" y="248">Visitor</text>
+  </g>
+
+  <path class="flow" d="M264 241 H296" marker-end="url(#a)" />
+  <path class="flow" d="M504 241 H536" marker-end="url(#a)" />
+  <path class="flow" d="M744 241 H776" marker-end="url(#a)" />
+  <path class="flow" d="M984 241 H1016" marker-end="url(#a)" />
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#42493f" />
+    </marker>
+  </defs>
+
+  <text class="chip" x="80" y="360">No database</text>
+  <text class="chip" x="300" y="360">No server process</text>
+  <text class="chip" x="520" y="360">Nothing to patch</text>
+  <text class="note" x="64" y="398">Every page is a file: that is why hosting is cheap, and why the build decides.</text>
+</svg>

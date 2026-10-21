@@ -1,13 +1,17 @@
 ---
 id: blog
 title: Blog
+description: Notes and articles from simsustech, published as GitHub Discussions.
 label: Blog
-icon: rss_feed
 order: 5
 tags:
   - menu
+icon:
+  name: i-mdi-post-outline
 ---
+
 ## Blog
-:::
-  [Why I use Quasar Framework](https://github.com/simsustech/simsustech/discussions/1)
-:::
+
+We publish our notes and articles as GitHub Discussions:
+
+[Read the blog on GitHub](https://github.com/simsustech/simsustech/discussions/categories/blog)
