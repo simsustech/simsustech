@@ -6,8 +6,6 @@ description: Technisch advies over duurzame energie, werktuigbouwkunde en web-
 label: Advies
 ---
 
-## Advies
-
 Heb je hulp nodig bij je project op een van de volgende gebieden?
 
 - Duurzame energie

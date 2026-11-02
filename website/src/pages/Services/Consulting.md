@@ -6,8 +6,6 @@ description: Technical advice on sustainable energy, mechanical engineering and
 label: Consulting
 ---
 
-## Consulting
-
 Do you need assistance with your project in one of the following areas?
 
 - Sustainable energy

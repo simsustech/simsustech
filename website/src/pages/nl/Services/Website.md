@@ -6,8 +6,6 @@ description: Eenvoudige maar krachtige, statisch gegenereerde websites gebouwd
 label: Website
 ---
 
-## Websites
-
 Op basis van [Vue](https://vuejs.org/) en
 [Quasar Framework](https://quasar.dev) leveren we eenvoudige maar krachtige
 websites voor professionals. Je website kan zeer geavanceerd zijn en toch

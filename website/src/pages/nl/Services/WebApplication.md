@@ -6,8 +6,6 @@ description: Complete, typeveilige webapplicaties op een zelfontwikkelde stack
 label: Webapplicatie
 ---
 
-## Webapplicaties
-
 Bij simsustech zijn we gespecialiseerd in het bouwen van complete
 webapplicaties met onze eigen, zelfontwikkelde stack.
 

@@ -6,8 +6,6 @@ description: Complete, type-safe web applications built on a self-developed
 label: Web application
 ---
 
-## Web applications
-
 At simsustech we specialise in building complete web applications using our own,
 self-developed stack.
 

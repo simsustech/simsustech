@@ -15,8 +15,6 @@ subpages:
   - modularapi
 ---
 
-## Products
-
 Alongside client work we build and maintain our own products.
 
 ### [Petboarding](/petboarding)

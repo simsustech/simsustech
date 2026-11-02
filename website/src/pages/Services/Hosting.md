@@ -6,8 +6,6 @@ description: Hosting, monitoring, backups and small changes for the sites we
 label: Hosting
 ---
 
-## Hosting
-
 A website is not finished when it goes live. This plan keeps it working, and it
 covers the things that actually go wrong in the years afterwards.
 

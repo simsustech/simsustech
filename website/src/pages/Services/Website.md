@@ -6,8 +6,6 @@ description: Simple but powerful, statically generated websites built with Vue
 label: Website
 ---
 
-## Websites
-
 Built on [Vue](https://vuejs.org/) and [Quasar Framework](https://quasar.dev),
 we provide simple but powerful websites for professionals. Your website can be
 highly advanced yet still lightning quick thanks to static site generation

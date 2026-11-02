@@ -6,8 +6,6 @@ description: Een krachtige facturatieoplossing met onveranderlijke facturen,
 label: SlimFact
 ---
 
-## SlimFact
-
 > Gestroomlijnde facturatie, eenvoudig gemaakt.
 
 SlimFact is een krachtige facturatieoplossing die je facturatieproces

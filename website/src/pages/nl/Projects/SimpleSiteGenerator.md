@@ -6,8 +6,6 @@ description: Een agentgerichte sitegenerator-kit die een complete statische
 label: Simple Site Generator
 ---
 
-## Simple Site Generator
-
 > Genereer eenvoudig een eenvoudige maar volledige website.
 
 De Simple Site Generator is een kit om vanuit Markdown-inhoud een complete,

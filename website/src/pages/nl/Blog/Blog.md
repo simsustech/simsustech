@@ -11,8 +11,6 @@ icon:
   name: i-mdi-post-outline
 ---
 
-## Blog
-
 We publiceren onze notities en artikelen als GitHub Discussions:
 
 [Lees de blog op GitHub](https://github.com/simsustech/simsustech/discussions/categories/blog)

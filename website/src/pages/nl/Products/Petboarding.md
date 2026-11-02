@@ -6,8 +6,6 @@ description: Een eenvoudig, snel en betrouwbaar boekingssysteem voor
 label: Petboarding
 ---
 
-## Petboarding
-
 > Eenvoudig, snel en betrouwbaar boekingssysteem voor dierenpensions.
 
 Petboarding is een boekingssysteem voor dierenpensions. Het is gebouwd op

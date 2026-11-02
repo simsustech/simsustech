@@ -6,8 +6,6 @@ description: An easy, fast and reliable pet boarding booking system for
 label: Petboarding
 ---
 
-## Petboarding
-
 > Easy, fast and reliable pet boarding booking system.
 
 Petboarding is a booking system for pet boarding businesses. It is built for

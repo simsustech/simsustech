@@ -6,8 +6,6 @@ description: Hosting, monitoring, back-ups en kleine wijzigingen voor de sites
 label: Hosting
 ---
 
-## Hosting
-
 Een website is niet klaar zodra hij live gaat. Dit abonnement houdt hem
 werkend, en dekt de dingen die in de jaren daarna echt misgaan.
 

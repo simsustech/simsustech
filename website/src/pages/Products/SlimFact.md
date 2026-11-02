@@ -6,8 +6,6 @@ description: A powerful invoicing solution that keeps invoices immutable,
 label: SlimFact
 ---
 
-## SlimFact
-
 > Streamlined invoicing made easy.
 
 SlimFact is a powerful invoicing solution designed to simplify your billing

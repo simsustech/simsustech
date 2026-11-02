@@ -15,8 +15,6 @@ subpages:
   - nl/modularapi
 ---
 
-## Producten
-
 Naast klantwerk bouwen en onderhouden we onze eigen producten.
 
 ### [Petboarding](/nl/petboarding)

@@ -6,8 +6,6 @@ description: An agent-focused site-generation kit that scaffolds, builds and
 label: Simple Site Generator
 ---
 
-## Simple Site Generator
-
 > Easily generate a simple but full-featured website.
 
 The Simple Site Generator is a kit for generating a complete, fast website from

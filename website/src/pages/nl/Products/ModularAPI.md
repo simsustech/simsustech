@@ -6,8 +6,6 @@ description: Een modulaire Node.js-API met OpenID Connect-autorisatie out of
 label: Modular API
 ---
 
-## Modular API
-
 > Modulaire Node.js-API met OpenID Connect-autorisatie out of the box.
 
 ### Kenmerken

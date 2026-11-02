@@ -6,8 +6,6 @@ description: The four steps from first email to handover — what happens in eac
 label: How we work
 ---
 
-## How we work
-
 Four steps. You can stop after any of them, and you know the price before the
 work begins.
 

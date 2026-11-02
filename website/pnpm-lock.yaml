@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@simple-site-generator/templates': link:../../simple-site-generator/packages/templates
+
 importers:
 
   .:
@@ -21,8 +24,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       '@simple-site-generator/templates':
-        specifier: ^0.2.0
-        version: 0.2.0(rolldown@1.2.12)(rollup@4.64.5)(vite@8.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))
+        specifier: link:../../simple-site-generator/packages/templates
+        version: link:../../simple-site-generator/packages/templates
       quasar:
         specifier: ^2.35.2
         version: 2.35.2
@@ -1988,9 +1991,6 @@ packages:
     resolution: {integrity: sha512-wogj6Trj8fAu+aD7HbpvHEBlyANMOvvO9MP5NFJaiQbprLKugtCdE6rFTxDhofXvRo4nswL9m4Cvysg3k5KcvQ==}
     engines: {node: '>=18'}
 
-  '@simple-site-generator/templates@0.2.0':
-    resolution: {integrity: sha512-XCyvhAQjXbSVbcDiwsyOp6c9OdV1qzXxaQ69QwDS3nrRX+LrL3zZJ3iDZIdeb2foIUV9cPAf6YZb62RmLjw8mw==}
-
   '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1':
     resolution: {integrity: sha512-/67zpWDBLV+oYAEL682s1ktXL0HgqX76f6gaVGkGnVZlBbm1zd0v4Bz8MFF2GGhoX9rvfq3KSQHubFHwa6w6/Q==}
     engines: {node: '>=12'}
@@ -3615,8 +3615,8 @@ packages:
     resolution: {integrity: sha512-RE2g0b5VGZsOCFOCgP7omTRYFqydmZkBwl5oNnQ1lDYC57uyO9KqNnNVxT7COSHTxrRCWVcAVOcbjk+tvh/rgQ==}
     engines: {node: '>=0.10.0'}
 
-  legacy-javascript@0.0.3:
-    resolution: {integrity: sha512-1r6MT4dVaJyXt4G07Cm2cQ0AUaLJdefiEp4SmIAylA++gnEQ82YvmzE58RkM5EP0fk5hROLCslUPGnwIYdZQVA==}
+  legacy-javascript@0.0.4:
+    resolution: {integrity: sha512-UTmeKBVxnfJcpmpOvzzNnLsQT99BXHpPlc/ZKddIRmWmrR0fw6335I3lq4+sJoP60UTbBNaYsGYVPc65YB1x3A==}
 
   leven@3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
@@ -6500,7 +6500,7 @@ snapshots:
 
   '@paulirish/trace_engine@0.0.65':
     dependencies:
-      legacy-javascript: 0.0.3
+      legacy-javascript: 0.0.4
       third-party-web: 0.30.0
 
   '@pinia/colada@1.4.8(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@7.0.2)(vue@3.5.44(typescript@7.0.2)))(vue@3.5.44(typescript@7.0.2))':
@@ -6796,26 +6796,6 @@ snapshots:
     dependencies:
       '@sentry/conventions': 0.16.0
       '@sentry/core': 10.76.2
-
-  '@simple-site-generator/templates@0.2.0(rolldown@1.2.12)(rollup@4.64.5)(vite@8.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))':
-    dependencies:
-      '@quasar/quasar-ui-qmediaplayer': 3.0.2
-      gray-matter: 4.0.3
-      import-meta-resolve: 4.2.0
-      unplugin-vue-components: 32.1.0(rolldown@1.2.12)(rollup@4.64.5)(vite@8.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))
-    transitivePeerDependencies:
-      - '@farmfe/core'
-      - '@nuxt/kit'
-      - '@rsbuild/core'
-      - '@rspack/core'
-      - bun-types-no-globals
-      - esbuild
-      - rolldown
-      - rollup
-      - unloader
-      - vite
-      - vue
-      - webpack
 
   '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1':
     dependencies:
@@ -7281,7 +7261,9 @@ snapshots:
 
   acorn@8.19.0: {}
 
-  ajv-formats@3.0.1: {}
+  ajv-formats@3.0.1:
+    dependencies:
+      ajv: 8.20.0
 
   ajv@8.20.0:
     dependencies:
@@ -8562,7 +8544,7 @@ snapshots:
 
   lazy-cache@1.0.4: {}
 
-  legacy-javascript@0.0.3: {}
+  legacy-javascript@0.0.4: {}
 
   leven@3.1.0: {}
 

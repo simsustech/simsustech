@@ -320,7 +320,18 @@ export default async function ({
               // it is not the shortcut CSS this supplies — it is the Quasar and
               // icon classes. The noise that rides along with it is bounded by
               // the design system's own `blocklist`.
-              new RegExp(`${ssg.templatePackage}.*\\.js`)
+              //
+              // Matched by path, not by package name. This site consumes the kit
+              // through a `link:`, and Vite resolves a linked dependency to where
+              // it really lives — `…/simple-site-generator/packages/templates/
+              // dist/business.js`, with the package name nowhere in the id. An
+              // `@simple-site-generator/templates` matcher therefore scanned
+              // nothing, silently: the sheet came out 65 KB lighter than the same
+              // kit produces for a `file:` install, the whole Quasar component
+              // layer and every icon the templates render were missing, and the
+              // only symptom was a header whose buttons had no padding and whose
+              // icons did not paint.
+              new RegExp('templates/dist/.*\\.js')
             ]
           }
         }

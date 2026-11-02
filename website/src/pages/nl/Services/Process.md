@@ -6,8 +6,6 @@ description: De vier stappen van eerste e-mail tot oplevering — wat er in elke
 label: Hoe we werken
 ---
 
-## Hoe we werken
-
 Vier stappen. Je kunt na elke stap stoppen, en je weet de prijs voordat het werk
 begint.
 
