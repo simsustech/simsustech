@@ -29,15 +29,6 @@ jobs:
           # Nothing pushes with the token; do not leave it in .git/config.
           persist-credentials: false
 
-      - name: Create .npmrc
-        run: |
-          cat > "${{ env.working-directory }}.npmrc" <<EOF
-          @simsustech:registry=https://npm.simsus.tech
-          //npm.simsus.tech/:_authToken=$SIMSUSTECH_NPM_TOKEN
-          EOF
-        env:
-          SIMSUSTECH_NPM_TOKEN: ${{ secrets.SIMSUSTECH_NPM_TOKEN }}
-
       # pnpm/action-setup v6.1.0, pinned. pnpm 12 is required: the dependency
       # set (Vite 8, Vue Router 5, Vitrify 0.30, TypeScript 7) does not install
       # or build on pnpm 9 / Node 20.
@@ -69,9 +60,3 @@ jobs:
           remote_host: ${{ secrets.DEPLOY_HOST }}
           remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOY_KEY }}
-
-      # Runs even when an earlier step failed: the runner is ephemeral, but a
-      # token written to disk should not outlive the step that needed it.
-      - name: Remove .npmrc
-        if: always()
-        run: rm -f "${{ env.working-directory }}.npmrc"
