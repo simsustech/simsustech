@@ -12,8 +12,6 @@ minimumReleaseAgeExclude:
   - unocss-preset-quasar@0.7.0
   - '@fastify/middie@9.3.6'
   - vite@8.3.5
-  - '@simple-site-generator/templates@0.2.0'
-  - simple-site-generator@0.2.0
+  - '@simple-site-generator/templates@0.3.0'
+  - simple-site-generator@0.3.0
   - vitrify@0.30.0
-overrides:
-  '@simple-site-generator/templates': link:../../simple-site-generator/packages/templates
