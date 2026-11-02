@@ -13,7 +13,13 @@
 # to every browser's built-in list. No CSP yet: the pages inline their CSS and
 # one event script, so a policy needs hashes or nonces and belongs in a change
 # that can be tested against the prerendered output.
-(SecurityHeaders) {
+#
+# The name carries the site, not just the purpose: the VPS runs one Caddy that
+# does `import /srv/*/Caddyfile`, so every site file shares one snippet
+# namespace. Two sites that both declare `(SecurityHeaders)` make Caddy drop the
+# second definition as an error, and that site then imports the other's headers
+# — silently, until one of the two changes.
+(SimsustechSecurityHeaders) {
   header {
     Strict-Transport-Security "max-age=15552000"
     X-Content-Type-Options "nosniff"
@@ -25,7 +31,7 @@
 }
 
 www.simsus.tech {
-  import SecurityHeaders
+  import SimsustechSecurityHeaders
 
   @webp path *.webp
   header @webp Cache-Control "public, max-age=31536000, immutable"
@@ -52,10 +58,10 @@ www.simsus.tech {
   # page a crawler will index — a soft 404 — and the status a monitor sees is a
   # lie. The kit's 404 page carries `noindex` of its own.
   #
-  # `import SecurityHeaders` again: this route does not inherit the site-level
+  # `import SimsustechSecurityHeaders` again: this route does not inherit the site-level
   # one, and it is reachable by anyone who mistypes a URL.
   handle_errors {
-    import SecurityHeaders
+    import SimsustechSecurityHeaders
     root * /srv/www.simsus.tech
     @notFound expression {err.status_code} == 404
     rewrite @notFound /404.html
