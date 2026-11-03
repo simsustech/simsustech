@@ -12,8 +12,8 @@ minimumReleaseAgeExclude:
   - unocss-preset-quasar@0.7.0
   - '@fastify/middie@9.3.6'
   - vite@8.3.5
-  - '@simple-site-generator/templates@0.3.0 || 0.4.0'
-  - simple-site-generator@0.3.0 || 0.4.0
+  - '@simple-site-generator/templates@0.3.0 || 0.4.0 || 0.4.1'
+  - simple-site-generator@0.3.0 || 0.4.0 || 0.4.1
   - vitrify@0.30.0 || 0.31.0 || 0.32.0
   - '@vitest/mocker@5.1.0'
   - '@vitest/spy@5.1.0'
