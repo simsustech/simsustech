@@ -23,7 +23,7 @@
     "build:ssr": "vitrify build -m ssr",
     "build:ssg": "vitrify build -m ssg",
     "check": "ssg check",
-    "preview": "pnpm run build && caddy run --config build/Caddyfile.preview --adapter caddyfile",
+    "preview": "pnpm run build && node scripts/preview.mjs",
     "verify": "ssg verify --ignore \"google*.html\"",
     "test": "vitrify test",
     "lint": "oxlint src",

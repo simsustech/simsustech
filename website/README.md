@@ -52,33 +52,24 @@ on visits.
 
 `dist/static` is plain files, so extensionless URLs — `/website` for
 `website.html` — need a rewrite, and `caddy file-server` has no `try_files`
-option: it answers 404 for every page URL. Use the same shape the deployed config
-uses:
-
-```caddyfile
-:8090 {
-	root * /absolute/path/to/website/dist/static
-	encode gzip
-	try_files {path}.html {path}
-	file_server
-	handle_errors {
-		root * /absolute/path/to/website/dist/static
-		@notFound expression {err.status_code} == 404
-		rewrite @notFound /404.html
-		file_server
-	}
-}
-```
+option: it answers 404 for every page URL. So `build/Caddyfile.preview` mirrors the
+deployed config's shape (`try_files {path}.html {path}` plus a `handle_errors` that
+keeps a real 404), and `pnpm preview` builds the site and serves it through that
+file:
 
 ```bash
-caddy run --config /path/to/that/Caddyfile --adapter caddyfile
+pnpm preview                      # prints http://localhost:8155, then serves
+PREVIEW_PORT=9000 pnpm preview    # another port, printed too
 ```
 
-The `root` must be absolute. Ending `try_files` in a file (`/404.html`, or
-`/index.html` as the scaffold used to) serves missing pages with a 200, which is
-a soft 404; `handle_errors` keeps the status honest and still shows the site's own
-404 page. `dist/static/Caddyfile` is the deployed copy — running it directly works
-too, once its host name and `/srv/...` root are changed.
+The URL is printed by `scripts/preview.mjs`, not by Caddy: a `:port` site block
+announces no address at all, only a JSON log line. The script also owns the port,
+because Caddy binds with `reuseport` — two previews on one port both start and the
+kernel alternates requests between them, so one site's HTML arrives with the other
+site's modules. 8155 is this site's slot; do not move it onto a port another
+preview here uses. If you want the deployed file itself instead,
+`dist/static/Caddyfile` works too, once its host name and `/srv/...` root are
+changed — its `root` must be absolute.
 
 ## Content
 

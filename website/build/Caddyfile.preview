@@ -7,7 +7,12 @@
 # answers 404 for every page URL. This mirrors the shape of `build/Caddyfile`,
 # which is what production runs, so what you check here is what ships.
 #
-# The port is overridable: PREVIEW_PORT=9000 pnpm preview
+# The port. `pnpm preview` prints the one it uses and passes it in
+# (`scripts/preview.mjs`, default 8155); set PREVIEW_PORT to pick another.
+#
+# Not 8095: that is what a crowd of other Caddyfiles here defaults to, and Caddy
+# binds with `reuseport` — two previews on one port both start and the kernel
+# alternates between them, so one site's HTML arrives with the other's modules.
 
 # The same security-header snippet production imports, for the same reason: a
 # preview that omits them does not show what ships, and `handle_errors` needs its
@@ -24,7 +29,7 @@
 	}
 }
 
-:{$PREVIEW_PORT:8090} {
+:{$PREVIEW_PORT:8155} {
 	# `root` is relative to the directory the command runs in, which is this
 	# package — so it needs no absolute path and survives a different checkout.
 	root * ./dist/static
