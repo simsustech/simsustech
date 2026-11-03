@@ -35,11 +35,24 @@
 
 	# The bundler fingerprints every asset as `name-<hash>.ext`; such a file is
 	# immutable, so the browser may keep it for a year without revalidating.
-	@hashed path_regexp hashed -[A-Za-z0-9_]{8,}\.(js|mjs|css|woff2|png|jpe?g|webp|svg)$
+	#
+	# Rolldown's hashes are base64url, so `-` and `_` appear inside them
+	# (`index-1HO4-Wjr.mjs`). A class without `-` left those files alone, and
+	# `immutable` then silently did nothing.
+	#
+	# Exactly eight characters, not "eight or more": an open class also matches a
+	# hyphenated word (`server-renderer.mjs`) and would mark a file immutable that
+	# is not.
+	@hashed path_regexp hashed -[A-Za-z0-9_-]{8}\.(js|mjs|css|woff2|png|jpe?g|webp|svg)$
 	header @hashed Cache-Control "public, max-age=31536000, immutable"
 
+	# `hide Caddyfile`: `build/Caddyfile` is copied into the web root, so without
+	# this `GET /Caddyfile` hands out the whole configuration. No leading slash —
+	# `hide` matches on file name.
 	try_files {path}.html {path}
-	file_server
+	file_server {
+		hide Caddyfile
+	}
 
 	# A missing page answers 404 with the site's own error page, rather than
 	# ending `try_files` in a file (which would answer 200 — a soft 404).
@@ -48,6 +61,8 @@
 		root * ./dist/static
 		@notFound expression {err.status_code} == 404
 		rewrite @notFound /404.html
-		file_server
+		file_server {
+			hide Caddyfile
+		}
 	}
 }
