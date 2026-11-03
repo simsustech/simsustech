@@ -73,6 +73,9 @@ const ssg = {
   // Business facts that are not per-page. Everything here is either visible on
   // the Contact page or a registered company detail; nothing is invented.
   extra: {
+    // The builder is the rights holder here, so the copyright line names it
+    // rather than the trade name the header already shows.
+    legal: '© simsustech',
     email: 'info@simsus.tech',
     // KvK (Dutch chamber of commerce) number; also shown on the Contact page.
     registration: '83537813'
