@@ -43,16 +43,15 @@ nothing, and with no runtime there is nothing to attack.
 ## The result
 
 - Every page is a static file; nothing is rendered per request.
-- **195 KB** of JavaScript and **34 KB** of CSS, gzipped, against budgets of
+- **201 KB** of JavaScript and **36 KB** of CSS, gzipped, against budgets of
   250 KB and 60 KB. Those budgets are enforced: a change that pushes past them
   fails the build rather than being discovered in the field.
-- Accessibility, best practices and SEO: **100** in the last verification run,
-  across 39 pages. Performance measured 90 in Lighthouse's mobile run, where
-  what remains is the application framework, not the content.
+- All four Lighthouse categories — performance, accessibility, best practices and
+  SEO — measure **100**, on all 39 pages and in both the mobile and the desktop run.
 - A new page is one Markdown file. The same content serves both languages.
 - The generator behind it is open source:
   [simsustech/simple-site-generator](https://github.com/simsustech/simple-site-generator).
 
-![Lighthouse scores for this site: accessibility 100, best practices 100, SEO 100, performance 90](/images/lighthouse-simsus.tech.svg)
+![Lighthouse scores for this site: performance 100, accessibility 100, best practices 100, SEO 100](/images/lighthouse-simsus.tech.svg)
 
 [Want a site like this? Get in touch.](/contact)

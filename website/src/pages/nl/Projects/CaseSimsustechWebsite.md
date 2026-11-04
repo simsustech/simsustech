@@ -45,16 +45,16 @@ aan te vallen.
 ## Het resultaat
 
 - Elke pagina is een statisch bestand; er wordt niets per verzoek gerenderd.
-- **195 KB** JavaScript en **34 KB** CSS, gecomprimeerd, tegen budgetten van
+- **201 KB** JavaScript en **36 KB** CSS, gecomprimeerd, tegen budgetten van
   250 KB en 60 KB. Die budgetten zijn hard: een wijziging die eroverheen gaat
   laat de build falen in plaats van dat je het in het veld ontdekt.
-- Toegankelijkheid, best practices en SEO: **100** in de laatste controle-run,
-  over 39 pagina's. Prestaties gemeten op 90 in de mobiele Lighthouse-run, waar
-  wat overblijft het applicatieframework is en niet de inhoud.
+- Alle vier de Lighthouse-categorieën — prestaties, toegankelijkheid, best
+  practices en SEO — meten **100**, op alle 39 pagina's en in zowel de mobiele als
+  de desktop-run.
 - Een nieuwe pagina is één Markdown-bestand. Dezelfde inhoud bedient beide talen.
 - De generator erachter is open source:
   [simsustech/simple-site-generator](https://github.com/simsustech/simple-site-generator).
 
-![Lighthouse-scores voor deze site: toegankelijkheid 100, best practices 100, SEO 100, prestaties 90](/images/lighthouse-simsus.tech.svg)
+![Lighthouse-scores voor deze site: prestaties 100, toegankelijkheid 100, best practices 100, SEO 100](/images/lighthouse-simsus.tech.svg)
 
 [Wil je zo'n website? Neem contact op.](/nl/contact)
