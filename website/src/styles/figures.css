@@ -1,0 +1,150 @@
+/*
+ * The illustrations, and the palette they share.
+ *
+ * They are inlined SVG rather than `<img>` (see the markdown rule in
+ * `vitrify.config.ts`), because the site's theme is a runtime toggle: the header
+ * menu calls `$q.dark.toggle()`, which puts `body--dark` on the page. An `<img>`
+ * is a document of its own and cannot see that class — it would only ever know
+ * the system's `prefers-color-scheme`, which is not what switches this site. An
+ * inlined SVG is part of the page, so `.body--dark` re-themes it along with
+ * everything else.
+ *
+ * The roles below are the site's tonal palette, not new colours: same values as
+ * the `--q-*` roles the rest of the page reads, named for what the drawing does
+ * with them.
+ */
+.figure {
+  --fig-panel: #ffffff;
+  --fig-edge: #c2c8bc;
+  --fig-surface: #f4f4ee;
+  --fig-accent-soft: #d6e8cd;
+  --fig-accent: #006e0c;
+  --fig-ink: #1a1c19;
+  --fig-ink-dim: #42493f;
+  --fig-track: #e8e9e2;
+  --fig-pass: #0cce6b;
+
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.body--dark .figure {
+  --fig-panel: #1e201c;
+  --fig-edge: #42493f;
+  --fig-surface: #282b27;
+  --fig-accent-soft: #22331d;
+  --fig-accent: #46e343;
+  --fig-ink: #e2e3dd;
+  --fig-ink-dim: #c2c8bc;
+  --fig-track: #282b27;
+  --fig-pass: #0cce6b;
+}
+
+/* A paragraph holding nothing but a figure is a figure, not running text. The
+   kit's preflight says this for `<img>`; an inlined `<svg>` needs it too, or the
+   illustration is held to the prose measure. */
+.ssg-prose > p:has(> svg.figure:only-child) {
+  max-width: none;
+}
+
+.fig-panel {
+  fill: var(--fig-panel);
+}
+.fig-edge {
+  fill: none;
+  stroke: var(--fig-edge);
+  stroke-width: 1;
+}
+.fig-title {
+  fill: var(--fig-ink);
+  font:
+    700 40px/1 system-ui,
+    sans-serif;
+}
+.fig-note {
+  fill: var(--fig-ink-dim);
+  font:
+    400 24px/1 system-ui,
+    sans-serif;
+}
+
+/* Lighthouse panel */
+.fig-ring {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+.fig-track {
+  stroke: var(--fig-track);
+}
+.fig-pass {
+  stroke: var(--fig-pass);
+}
+.fig-score {
+  fill: var(--fig-ink);
+  font:
+    700 44px/1 system-ui,
+    sans-serif;
+  text-anchor: middle;
+}
+.fig-label {
+  fill: var(--fig-ink-dim);
+  font:
+    600 26px/1 system-ui,
+    sans-serif;
+  text-anchor: middle;
+}
+.fig-chip {
+  fill: var(--fig-surface);
+  stroke: var(--fig-edge);
+  stroke-width: 1;
+}
+.fig-chip-label {
+  fill: var(--fig-ink-dim);
+  font:
+    600 22px/1 system-ui,
+    sans-serif;
+  text-anchor: middle;
+}
+
+/* Pipeline diagram */
+.fig-step {
+  fill: var(--fig-accent-soft);
+  stroke: var(--fig-accent);
+  stroke-width: 2;
+}
+.fig-step-alt {
+  fill: var(--fig-surface);
+  stroke: var(--fig-edge);
+  stroke-width: 2;
+}
+.fig-step-title {
+  fill: var(--fig-ink);
+  font:
+    700 26px/1.2 system-ui,
+    sans-serif;
+  text-anchor: middle;
+}
+.fig-step-note {
+  fill: var(--fig-ink-dim);
+  font:
+    400 21px/1.3 system-ui,
+    sans-serif;
+  text-anchor: middle;
+}
+.fig-flow {
+  stroke: var(--fig-ink-dim);
+  stroke-width: 3;
+  fill: none;
+}
+.fig-arrowhead {
+  fill: var(--fig-ink-dim);
+}
+.fig-accent-text {
+  fill: var(--fig-accent);
+  font:
+    600 21px/1 system-ui,
+    sans-serif;
+  text-anchor: middle;
+}

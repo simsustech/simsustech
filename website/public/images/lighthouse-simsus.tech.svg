@@ -1,96 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc" class="figure">
   <title id="title">Lighthouse scores for simsus.tech</title>
   <desc id="desc">Lighthouse's report for simsus.tech, in both the mobile and the desktop form factor: performance 100, accessibility 100, best practices 100 and SEO 100, measured in the verification run that gates every deploy.</desc>
 
   <!--
-    The palette follows the system's light or dark preference, the way an inline
-    SVG cannot: this file is loaded through `<img>`, which is a document of its
-    own, so it answers to `prefers-color-scheme` rather than to the page's theme.
-    Both sets are the site's own q-* custom properties, so the panel does not
-    drift from the page it sits in.
-
-    The colours live here, never in a `fill=`/`stroke=` attribute: an attribute
-    wins over the stylesheet, and the dark block would then never apply.
+    No styles here on purpose. This file is inlined into the page by the markdown
+    rule in `vitrify.config.ts`, and the palette lives in `src/styles/figures.css`
+    beside the rest of the site's colours — one definition shared by every figure,
+    switched by the dark class that the header's theme toggle puts on the body.
+    Keep colours out of fill and stroke attributes: an attribute beats the
+    stylesheet, and the dark palette would never apply.
   -->
-  <style>
-    :root {
-      --panel: #ffffff;
-      --edge: #c2c8bc;
-      --track: #e8e9e2;
-      --ink: #1a1c19;
-      --ink-dim: #42493f;
-      --chip: #f3f4ee;
-      --pass: #0cce6b;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --panel: #1e201c;
-        --edge: #42493f;
-        --track: #282b27;
-        --ink: #e2e3dd;
-        --ink-dim: #c2c8bc;
-        --chip: #282b27;
-        --pass: #0cce6b;
-      }
-    }
 
-    .panel { fill: var(--panel); }
-    .edge { fill: none; stroke: var(--edge); stroke-width: 1; }
-    .ring { fill: none; stroke-width: 14; stroke-linecap: round; }
-    .track { stroke: var(--track); }
-    .pass { stroke: var(--pass); }
-    .score { fill: var(--ink); font: 700 44px/1 system-ui, sans-serif; text-anchor: middle; }
-    .label { fill: var(--ink-dim); font: 600 26px/1 system-ui, sans-serif; text-anchor: middle; }
-    .heading { fill: var(--ink); font: 700 40px/1 system-ui, sans-serif; }
-    .note { fill: var(--ink-dim); font: 400 24px/1 system-ui, sans-serif; }
-    .chip { fill: var(--chip); stroke: var(--edge); stroke-width: 1; }
-    .chip-label { fill: var(--ink-dim); font: 600 22px/1 system-ui, sans-serif; text-anchor: middle; }
-  </style>
+  <rect class="fig-panel" x="0.5" y="0.5" width="1199" height="448" rx="24" />
+  <rect class="fig-edge" x="0.5" y="0.5" width="1199" height="448" rx="24" />
 
-  <rect class="panel" x="0.5" y="0.5" width="1199" height="448" rx="24" />
-  <rect class="edge" x="0.5" y="0.5" width="1199" height="448" rx="24" />
-
-  <text class="heading" x="64" y="92">Lighthouse</text>
-  <text class="note" x="64" y="130">simsus.tech</text>
+  <text class="fig-title" x="64" y="92">Lighthouse</text>
+  <text class="fig-note" x="64" y="130">simsus.tech</text>
 
   <!-- Both runs, because they are two measurements and both are 100: the form
        factor is part of a Lighthouse result, so it is stated rather than implied. -->
-  <rect class="chip" x="920" y="58" width="102" height="40" rx="20" />
-  <text class="chip-label" x="971" y="84">Mobile</text>
-  <rect class="chip" x="1034" y="58" width="102" height="40" rx="20" />
-  <text class="chip-label" x="1085" y="84">Desktop</text>
+  <rect class="fig-chip" x="920" y="58" width="102" height="40" rx="20" />
+  <text class="fig-chip-label" x="971" y="84">Mobile</text>
+  <rect class="fig-chip" x="1034" y="58" width="102" height="40" rx="20" />
+  <text class="fig-chip-label" x="1085" y="84">Desktop</text>
 
   <!-- The four categories in the order Lighthouse reports them: performance
        first, then the three that are gated at 100. r=56, so a full circle is
        2πr = 351.86 of stroke, drawn from the top with rotate(-90). -->
 
   <g transform="translate(225 240)">
-    <circle class="ring track" r="56" />
-    <circle class="ring pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
-    <text class="score" y="15">100</text>
+    <circle class="fig-ring fig-track" r="56" />
+    <circle class="fig-ring fig-pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="fig-score" y="15">100</text>
   </g>
-  <text class="label" x="225" y="340">Performance</text>
+  <text class="fig-label" x="225" y="340">Performance</text>
 
   <g transform="translate(475 240)">
-    <circle class="ring track" r="56" />
-    <circle class="ring pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
-    <text class="score" y="15">100</text>
+    <circle class="fig-ring fig-track" r="56" />
+    <circle class="fig-ring fig-pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="fig-score" y="15">100</text>
   </g>
-  <text class="label" x="475" y="340">Accessibility</text>
+  <text class="fig-label" x="475" y="340">Accessibility</text>
 
   <g transform="translate(725 240)">
-    <circle class="ring track" r="56" />
-    <circle class="ring pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
-    <text class="score" y="15">100</text>
+    <circle class="fig-ring fig-track" r="56" />
+    <circle class="fig-ring fig-pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="fig-score" y="15">100</text>
   </g>
-  <text class="label" x="725" y="340">Best Practices</text>
+  <text class="fig-label" x="725" y="340">Best Practices</text>
 
   <g transform="translate(975 240)">
-    <circle class="ring track" r="56" />
-    <circle class="ring pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
-    <text class="score" y="15">100</text>
+    <circle class="fig-ring fig-track" r="56" />
+    <circle class="fig-ring fig-pass" r="56" stroke-dasharray="351.86 351.86" transform="rotate(-90)" />
+    <text class="fig-score" y="15">100</text>
   </g>
-  <text class="label" x="975" y="340">SEO</text>
+  <text class="fig-label" x="975" y="340">SEO</text>
 
   <text class="fig-note" x="64" y="394">The mobile and the desktop run both measure 100, on all 39 pages.</text>
   <text class="fig-note" x="64" y="426">JavaScript 201 KB of 250 KB. CSS 36 KB of 60 KB. Performance warns, it does not gate.</text>

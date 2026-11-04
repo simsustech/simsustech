@@ -11,6 +11,9 @@ import { certificateFor } from 'devcert'
 import { plugin as mdPlugin } from 'vite-plugin-markdown'
 import { Mode } from 'vite-plugin-markdown'
 import { copyFile } from 'fs/promises'
+import { readFileSync } from 'node:fs'
+import MarkdownIt from 'markdown-it'
+import { fileURLToPath } from 'node:url'
 import { ssgSitemap } from '@simple-site-generator/templates/seo'
 import { ssgUnoConfig } from '@simple-site-generator/templates/design'
 import type { SeoBusiness, SiteExtra } from '@simple-site-generator/templates'
@@ -169,6 +172,44 @@ const quasarConf: QuasarPluginOptions = {
   disableSass: true
 }
 
+/**
+ * Pages are rendered by `vite-plugin-markdown` with markdown-it, and an image in
+ * a page becomes an `<img>` — a document of its own. That cannot follow this
+ * site's theme, because the theme is a runtime toggle (`$q.dark.toggle()` in the
+ * header menu sets `body--dark`), not a system preference: an `<img>` sees only
+ * `prefers-color-scheme`, so the illustration kept its light palette over a dark
+ * page.
+ *
+ * So a local `/images/*.svg` illustration is inlined after rendering. Inlined, the
+ * drawing is part of the page: the palette in `src/styles/figures.css` switches on
+ * `body--dark` like every other colour, and the figure costs no request of its own.
+ *
+ * The inlining happens here rather than in a markdown-it renderer rule because
+ * this plugin bundles its own markdown-it: an instance passed in is not an
+ * `instanceof` that copy, so its rules are dropped and the default `<img>` is
+ * rendered instead. `markdown` is the hook where the whole render is ours.
+ */
+const markdown = new MarkdownIt({ html: true })
+const figures = new Map<string, string>()
+
+const inlineFigures = (html: string): string =>
+  html.replace(
+    /<img src="(\/images\/[^"]+\.svg)"[^>]*>/g,
+    (tag: string, src: string) => {
+      const cached = figures.get(src)
+      if (cached) return cached
+
+      try {
+        const file = fileURLToPath(new URL(`./public${src}`, import.meta.url))
+        const svg = readFileSync(file, 'utf8').replace(/^<\?xml[^>]*\?>\s*/, '')
+        figures.set(src, svg)
+        return svg
+      } catch {
+        return tag
+      }
+    }
+  )
+
 export default async function ({
   mode
 }: Parameters<VitrifyConfigAsync>[0]): Promise<VitrifyConfig> {
@@ -178,7 +219,8 @@ export default async function ({
     },
     plugins: [
       mdPlugin({
-        mode: [Mode.HTML]
+        mode: [Mode.HTML],
+        markdown: (body: string) => inlineFigures(markdown.render(body))
       }),
       // Emits sitemap.xml and robots.txt into dist/static, generated from the
       // same page frontmatter the router reads. This replaces the old
@@ -237,6 +279,9 @@ export default async function ({
     ],
     ssg,
     vitrify: {
+      // The illustration palette and the prose rule that lets an inlined figure
+      // use the full width, beside the figures' own markdown rule below.
+      globalCss: ['src/styles/figures.css'],
       // Registering the Quasar plugin is what makes `useQuasar()` and every
       // `q-*` component work during SSR. Without it a prerendered page throws
       // "Cannot read properties of undefined (reading 'screen')" and ships an
