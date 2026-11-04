@@ -35,6 +35,7 @@ cards:
       message: Consulting
       route: /consulting
 cta:
+  heading: Ready to start?
   message: Get in touch
   route: /contact
 image: /images/simsustech.svg
@@ -87,5 +88,4 @@ proven open-source software and keep what we deliver maintainable for years.
 - Consulting **€95 per hour** — see [consulting](/consulting)
 - Hosting **€25 per month** — see [hosting](/hosting)
 
-[Get in touch](/contact) to discuss your project, and you get a fixed quote
-before any work starts.
+You get a fixed quote before any work starts.

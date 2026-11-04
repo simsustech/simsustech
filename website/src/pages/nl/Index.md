@@ -37,6 +37,7 @@ cards:
       message: Advies
       route: /nl/consulting
 cta:
+  heading: Klaar om te beginnen?
   message: Neem contact op
   route: /nl/contact
 image: /images/simsustech.svg
@@ -88,5 +89,4 @@ opleveren jarenlang onderhoudbaar.
 - Advies **€95 per uur** — zie [advies](/nl/consulting)
 - Hosting **€25 per maand** — zie [hosting](/nl/hosting)
 
-[Neem contact op](/nl/contact) om je project te bespreken; je krijgt een vaste
-prijsopgave voordat we beginnen.
+Je krijgt een vaste prijsopgave voordat we beginnen.
