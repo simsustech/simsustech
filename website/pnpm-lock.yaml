@@ -21,8 +21,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       '@simple-site-generator/templates':
-        specifier: ^0.4.1
-        version: 0.4.1(rolldown@1.2.16)(rollup@4.67.4)(vite@8.3.5(@types/node@26.6.6)(jiti@2.7.0)(sass@1.107.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))
+        specifier: ^0.5.1
+        version: 0.5.1(rolldown@1.2.16)(rollup@4.67.4)(vite@8.3.5(@types/node@26.6.6)(jiti@2.7.0)(sass@1.107.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))
       quasar:
         specifier: ^2.35.2
         version: 2.35.2
@@ -97,8 +97,8 @@ importers:
         specifier: ^1.90.0
         version: 1.90.0
       simple-site-generator:
-        specifier: ^0.4.1
-        version: 0.4.1(@types/node@26.6.6)(rollup@4.67.4)(supports-color@8.1.1)
+        specifier: ^0.5.1
+        version: 0.5.1(@types/node@26.6.6)(rollup@4.67.4)(supports-color@8.1.1)
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
@@ -1973,8 +1973,8 @@ packages:
     resolution: {integrity: sha512-m/MVCvPzQJJZZCTFlVPCrTuoncT7SR80+QKg1K7ul25AsL0byABr5KsHCbXVpOYXLVz04Omk+pOOR5Cv2IAlrA==}
     engines: {node: '>=20.19.0 <22.0.0 || >=22.12.0 <23.0.0 || >=23.2.0'}
 
-  '@simple-site-generator/templates@0.4.1':
-    resolution: {integrity: sha512-9E09xmoBuHYMui+QuCd7K2i+eRke63QThtf+wcspMxLgJu4x79TvfhOCYurWZXcywsJDmpbIs1OPJAIv2uU/Dg==}
+  '@simple-site-generator/templates@0.5.1':
+    resolution: {integrity: sha512-CkcpHT0DdvOSp5qdmpZpEAJqNp8z/iwYZIa9FcxXC56ybuMCcwQMKU1bCZ+gwC0rm7NAEwVY2Gfd+myWmleB5A==}
 
   '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1':
     resolution: {integrity: sha512-/67zpWDBLV+oYAEL682s1ktXL0HgqX76f6gaVGkGnVZlBbm1zd0v4Bz8MFF2GGhoX9rvfq3KSQHubFHwa6w6/Q==}
@@ -4327,8 +4327,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  simple-site-generator@0.4.1:
-    resolution: {integrity: sha512-/oGe+I4mMj9+1DtzR7aghmA0K8IJGEsM17PppkPLGbfp5Bl8AGcgjJVW8dOWL4LIGiPtLRjH2IpAkeRSHbTX2Q==}
+  simple-site-generator@0.5.1:
+    resolution: {integrity: sha512-7tQQOOAR8Dce00DXtz7mp3S0NBEx1sytVEQN4ks8cLtOAlSYKlixunQ4HcCUCQtSFWMKcYG7QRzbWPYk8thGIA==}
     engines: {node: '>=16.0.0'}
     hasBin: true
 
@@ -6649,7 +6649,7 @@ snapshots:
       '@sentry/conventions': 0.29.0
       '@sentry/core': 11.10.0
 
-  '@simple-site-generator/templates@0.4.1(rolldown@1.2.16)(rollup@4.67.4)(vite@8.3.5(@types/node@26.6.6)(jiti@2.7.0)(sass@1.107.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))':
+  '@simple-site-generator/templates@0.5.1(rolldown@1.2.16)(rollup@4.67.4)(vite@8.3.5(@types/node@26.6.6)(jiti@2.7.0)(sass@1.107.1)(terser@5.51.2))(vue@3.5.44(typescript@7.0.2))':
     dependencies:
       '@quasar/quasar-ui-qmediaplayer': 3.0.2
       gray-matter: 4.0.3
@@ -9250,7 +9250,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-site-generator@0.4.1(@types/node@26.6.6)(rollup@4.67.4)(supports-color@8.1.1):
+  simple-site-generator@0.5.1(@types/node@26.6.6)(rollup@4.67.4)(supports-color@8.1.1):
     dependencies:
       '@inquirer/prompts': 8.7.5(@types/node@26.6.6)
       '@vitrify/tools': 0.5.5
